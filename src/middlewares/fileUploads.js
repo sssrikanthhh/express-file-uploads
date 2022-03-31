@@ -1,5 +1,7 @@
 const multer = require('multer');
 const path = require('path');
+
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, '../userUploads'));
@@ -12,12 +14,6 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
 
-  // The function should call `cb` with a boolean
-  // to indicate if the file should be accepted
-
-  // To reject this file pass `false`, like so:
-
-  // To accept the file pass `true`, like so:
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true);
   } else {
